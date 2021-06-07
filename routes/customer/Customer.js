@@ -9,16 +9,10 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 const CustomerAuthMiddleware = require('../../middleware/customerauthMiddleware')
 
-
-
-
 Router.get('/customer', async(req, res)=>{
     let data = await CUSTOMERMODEL.find({});
     res.json({data})
 })
-
-
-
 
 Router.post('/register', 
   [

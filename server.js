@@ -17,6 +17,7 @@ app.use(cors());
 app.use('/products', require('./routes/products/Product'))
 app.use('/admin/api', require('./routes/admin/admin'))
 app.use('/customers/api', require('./routes/customer/Customer'))
+app.use('/shop/api', require('./routes/shop/shop.routes') )
 
 app.use(express.static('adminpanel/build'));
     app.get('*', (req, res) => {
