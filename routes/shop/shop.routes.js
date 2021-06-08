@@ -8,5 +8,4 @@ Router.get('/info', async (req, res)=>{
 })
 
 
-
 module.exports = Router;

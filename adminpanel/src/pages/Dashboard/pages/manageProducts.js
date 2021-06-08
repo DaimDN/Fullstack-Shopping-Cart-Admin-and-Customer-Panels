@@ -275,12 +275,11 @@ const ManageProducts = ({product})=>{
 
                 <div className="row">
                 <div className="col-2">
-                <div  className="card shadow position-fixed alert-danger">
-                    <div className="card-body">
-                    <SIDEBAR/>
-                    </div>
-                </div>
-          
+                <div  className="position-fixed">
+              <div className="">
+              <SIDEBAR/>
+              </div>
+                </div>          
                      </div>
                     <div className="col-10">
                     <div className="container">

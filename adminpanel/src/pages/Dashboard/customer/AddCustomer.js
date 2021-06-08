@@ -141,8 +141,8 @@ const ADDCUSTOMER = ()=>{
         <div>
         <div className="row">
           <div className="col-2">
-          <div  className="card shadow position-fixed alert-danger">
-              <div className="card-body">
+          <div  className="position-fixed">
+              <div className="">
               <SIDEBAR/>
               </div>
           </div>

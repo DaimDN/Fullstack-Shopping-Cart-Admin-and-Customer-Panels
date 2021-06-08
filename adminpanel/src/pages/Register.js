@@ -106,17 +106,17 @@ const RegisterHandler = ({ register, isAuthenticated })=>{
         return (
             <Fragment>
                 <div className="g-sidenav-show">
-                         <section class="h-100-vh mb-8 ">
+                         <section class="h-200-vh mb-8 padd-inn ">
                              <div class="container">
                                <div class="row mt-lg-n11 mt-md-n11 mt-n11">
                                  <div class="col-xl-6 col-lg-6 col-md-6 mx-auto">                          
                                  <div class="card  z-index-0 space shadow">   
-                                     <div className="card-header bg-gradient-light">
-                                     <p class="text-sm mt-3 mb-0 al-200">Admin Account have an account? </p>
+                                     <div className="card-header">
+                                     <p class="text-sm mt-3 mb-0 al-200">Sorry! Admin Account is already Registered </p>
                                      </div>                            
-                                     <div class="card-body alert-primary">                            
+                                     <div class="card-body ">                            
                                          <div class="text-center">
-                                         <a href="/" class=" heading btn bg-gradient-light w-100 my-4 mb-2">LOGIN</a>
+                                         <a href="/" class=" heading text-white btn bg-primary w-40 my-4 mb-2">Admin Login</a>
                                          </div>
                                      </div>
                                  </div>

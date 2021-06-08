@@ -1,16 +1,35 @@
-import react from 'react'
+import {useState, useEffect, Fragment} from 'react'
+
 import SIDEBAR from '../components/Sidebar'
 import TOPBAR from '../components/TopBar'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const AddProduct = ()=>{
+
+    const [allImages, setallImages] = useState(undefined);
+
+
+
+
+    const imagesHandler = (e)=>{
+        var imgArray = e.target.files;
+        var sortedBlob = [];
+        imgArray = [...imgArray];
+        var FilteredBlob = imgArray.map(anItem => {
+            var File = URL.createObjectURL(anItem);
+            return File;
+        })
+        setallImages(FilteredBlob);
+    }
+
+
     return (
         <div>
         <div className="row">
           <div className="col-2">
-          <div  className="card shadow position-fixed alert-danger">
-              <div className="card-body">
+          <div  className="position-fixed">
+              <div className="">
               <SIDEBAR/>
               </div>
           </div>
@@ -28,13 +47,13 @@ const AddProduct = ()=>{
 
 
                    <label>Product name</label>
-                   <input className="form-control"/>
+                   <input placeholder="Denim outdoor Fashion Jeans" className="form-control"/>
                     <br/>
                    <label>Product Category</label>
-                   <input className="form-control"/>
+                   <input placeholder="Jeans.." className="form-control"/>
                    <br/>
                    <label>Product Brand</label>
-                   <input className="form-control"/>
+                   <input placeholder="denim" className="form-control"/>
                     <br/>
 
                     <div className="row">
@@ -51,7 +70,7 @@ const AddProduct = ()=>{
                         </div>
                         <div className="col-5">
                             <label>Enter product price</label>
-                            <input  className="form-control" type="text" />
+                            <input placeholder="34.5£" className="form-control" type="text" />
                         </div>
                         <div className="col-2">
                         <label>Choose color</label>
@@ -61,11 +80,11 @@ const AddProduct = ()=>{
                     </div>
                     <br/>
                     <label>Enter product ID</label>
-                    <input  className="form-control" type="text" />
+                    <input placeholder="SKU-001"  className="form-control" type="text" />
 
                     <br/>
                     <label>Enter product Tags &nbsp; <i> e.g denim gap hot</i></label>
-                    <input  className="form-control" type="text" />
+                    <input placeholder="shirt, summer, winter..."  className="form-control" type="text" />
                     <br/>
 
                     <label>Enter product Description</label>
@@ -99,27 +118,52 @@ const AddProduct = ()=>{
                     />
                     <br/>
                     <label>Enter StockLevel </label>
-                    <input  className="form-control" type="text" />
+                    <input placeholder="50"  className="form-control" type="text" />
                     <br/>
 
                     <label>Enter Product Weight </label>
-                    <input  className="form-control" type="text" />
+                    <input placeholder="5"  className="form-control" type="text" />
                     <br/>
 
                     <label>Enter Product Images</label>
                     <br/>
-                    <input  className="form-control" type="file" />
                     <br/>
-                    <input  className="form-control" type="file" />
+                    <div class="file-upload">
+                        <div class="file-select">
+                            <div class="file-select-button" id="fileName"> <i class="fas fa-cloud-upload-alt"></i> &nbsp; Choose Files </div>
+                            <div class="file-select-name" id="noFile">No file chosen...</div> 
+                            <input onChange={(e)=>{imagesHandler(e)}} type="file" name="chooseFile" id="chooseFile" multiple/>
+                        </div>
+                        </div>                   
                     <br/>
-                    <input  className="form-control" type="file" />
                     <br/>
-                    <input  className="form-control" type="file" />
                     <br/>
 
+                    {allImages !== undefined && <div>
+
+                    <div className="row">
+                    {allImages.map((anImg, index)=>{
+                        return <div className="col-3" style={{marginBottom: '20px'}}>
+                        <div class="card" >
+                        <img class="card-img-top img-fluid card-hiv shadow" onClick={()=>{
+                            var foundImg = allImages.filter((a)=>{
+                                return a !== anImg;
+                            })
+                            setallImages(foundImg)
+                        }}  src={anImg} alt="Card image cap"/>
+                    
+                    </div>
+
+                        </div>
+                    })}
+                    
+                    </div>                   
+                    </div>}
+
+                    <br/>
                     <br/>
                     <div className="text-end">
-                        <button className="btn  btn-dark">Add Product</button>
+                    <button className="btn  btn-dark"> <i class="fas fa-plus-circle"></i>&nbsp; Add Product</button>
                     </div>
                     </div>
                    </div>

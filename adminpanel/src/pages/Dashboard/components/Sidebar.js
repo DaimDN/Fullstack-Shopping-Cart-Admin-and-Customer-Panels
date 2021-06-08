@@ -5,8 +5,9 @@ const sidebar = ()=>{
 
         <div className="">
             <div class="flex-shrink-0 p-3 " >
-    <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
-      <span class="fs-5 fw-semibold">Dashboard </span>
+    <a href="/dashboard" class="d-flex  align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+      <span class="fs-5 fw-semibold ">
+      Dashboard </span>
     </a>
     <ul class="list-unstyled ps-0">
       <li class="mb-1">

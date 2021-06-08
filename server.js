@@ -22,12 +22,9 @@ app.use('/shop/api', require('./routes/shop/shop.routes') )
 app.use(express.static('adminpanel/build'));
     app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'adminpanel', 'build', 'index.html'));
-    });
+});
 
 
 module.exports = app;
 
-
-
-// 
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
@@ -7,20 +7,40 @@ import {LogoutController} from '../action/auth'
 import TOPBAR from './Dashboard/components/TopBar'
 import SIDEBAR from './Dashboard/components/Sidebar'
 import MAIN from './Dashboard/components/main'
+import {GET_ALL_CUSTOMERS} from '../action/customer.action'
+import {loadAdmin, LoginController} from '../action/auth'
+
+
 const Dashboard = ({
     auth: { user },
+    customer : {customers}
 })=>{
+
+
+
+
+  useEffect(()=>{
+    loadAdmin();
+    GET_ALL_CUSTOMERS();
+ 
+  },[])
+
 
 
   const onlogout = ()=>{
     LogoutController();
+    
   }
 
     return (
-        <div>
+        <div >
         <div className="row">
           <div className="col-lg-2">
-            <SIDEBAR/>
+          <div  className="position-fixed">
+              <div className="">
+              <SIDEBAR/>
+              </div>
+          </div>
           </div>
           <div className="col-lg-10">
           <div className="container">
@@ -42,9 +62,10 @@ Dashboard.propTypes = {
   
   const mapStateToProps = (state) => ({
     auth: state.auth,
-    profile: state.profile
+    profile: state.profile,
+    customer: state.customer
   });
   
-  export default connect(mapStateToProps, {})(
+  export default connect(mapStateToProps, {LoginController})(
     Dashboard
   );

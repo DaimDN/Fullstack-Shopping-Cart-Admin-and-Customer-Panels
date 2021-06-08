@@ -6,16 +6,15 @@ import {GET_ALL_CUSTOMERS} from '../../../action/customer.action'
 import {connect} from 'react-redux'
 
 
-const MANAGECUSTOMER = ({customer})=>{
+const MANAGECUSTOMER = ({
+    customer : {customers}
 
-    const [allCustomer, setallCustomer] = useState(undefined);
+})=>{
+
 
     useEffect(()=>{
         GET_ALL_CUSTOMERS();
-        setallCustomer(customer.customers);
     },[])
-
-
 
 
     return (
@@ -23,12 +22,11 @@ const MANAGECUSTOMER = ({customer})=>{
             <div>
             <div className="row">
                 <div className="col-2">
-                <div  className="card shadow position-fixed alert-danger">
-                    <div className="card-body">
-                    <SIDEBAR/>
-                    </div>
-                </div>
-          
+                <div  className=" lh position-fixed">
+              <div className="">
+              <SIDEBAR/>
+              </div>
+                     </div>          
                      </div>
                     <div className="col-10">
                     <div className="container">
@@ -52,8 +50,8 @@ const MANAGECUSTOMER = ({customer})=>{
                                         </tr>
                                     </thead>                                       
                                         <tbody>
-                                        {allCustomer !== undefined  && <Fragment>
-                                        {allCustomer.map((aCustomer, index)=>{
+                                        {customers !== undefined  && <Fragment>
+                                        {customers.map((aCustomer, index)=>{
                                             return <Fragment key={index}>
                                             <tr>
                                         <td className="product-text">{aCustomer.name}</td>
